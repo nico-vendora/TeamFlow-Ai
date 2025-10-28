@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TeamFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'gray-900': '#121212',
+              'gray-800': '#1e1e1e',
+              'gray-700': '#2d2d2d',
+              'gray-600': '#3c3c3c',
+              'gray-500': '#5a5a5a',
+              'gray-400': '#9e9e9e',
+              'gray-300': '#e0e0e0',
+              'brand-purple': '#8B5CF6',
+            },
+          },
+        },
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.546.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "date-fns": "https://aistudiocdn.com/date-fns@^4.1.0",
+    "events": "https://aistudiocdn.com/events@^3.3.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
+    "@notionhq/client": "https://aistudiocdn.com/@notionhq/client@^5.3.0"
+  }
+}
+</script>
+<style>
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out forwards;
+}
+.dragging, .resizing {
+  opacity: 0.5;
+  border: 2px dashed #8B5CF6 !important;
+  cursor: grabbing;
+}
+.resize-handle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  cursor: ns-resize;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.task-item:hover .resize-handle {
+  opacity: 1;
+}
+.task-item.completed {
+  opacity: 0.6;
+}
+.task-item.completed .task-title {
+  text-decoration: line-through;
+}
+@keyframes highlight-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(251, 191, 36, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+}
+.task-item.highlighted {
+  animation: highlight-pulse 1.5s ease-out;
+}
+</style>
+</head>
+  <body class="bg-gray-900 text-gray-300">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
